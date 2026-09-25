@@ -22,9 +22,14 @@ namespace Photo_studio
             {
                 Console.WriteLine("Enter standard (1 for basic, 2 for high): ");
                 int standart = Convert.ToInt32(Console.ReadLine());
+                if (standart != 1 && standart != 2)
+                {
+                    Console.WriteLine("Invalid standard.");
+                    return;
+                }
                 Business business = new Business();
                 int totalTime = business.CalculateTime(standart, numOfPic);
-                Console.WriteLine($"Total time for {numOfPic} pictures: {totalTime} hours.");
+                Console.WriteLine($"Total time for {numOfPic} pictures: {totalTime} seconds.");
             }
         }
     }

@@ -14,19 +14,16 @@ namespace Photo_studio
         {
             if (numOfPic <= 19)
             {
-                if (standart == 1)
-                {
-                    return dal.BasicStartTime() + dal.BasicStandartTime();
-                }
-                else if (standart == 2)
-                {
-                    return dal.BasicStartTime() + dal.BasicHighTime();
-                }
-               
+                int perPic = standart == 2 ? dal.BasicHighTime() : dal.BasicStandartTime();
+                return dal.BasicStartTime() + numOfPic * perPic;
+            }
+            else if (numOfPic >= 20 && numOfPic < 100)
+            {
+                return dal.PackageTime() * numOfPic;
             }
             else
             {
-                return dal.BasicStartTime() + dal.BasicStandartTime();
+                return numOfPic * dal.ParallelTime();
             }
         }
     }
