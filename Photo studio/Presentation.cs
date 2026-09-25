@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,17 @@ namespace Photo_studio
                 }
                 Business business = new Business();
                 int totalTime = business.CalculateTime(standart, numOfPic);
-                Console.WriteLine($"Total time for {numOfPic} pictures: {totalTime} seconds.");
+                if (totalTime < 60)
+                {
+                    Console.WriteLine($"Total time for {numOfPic} pictures: {totalTime} seconds.");
+                }
+                else
+                {
+                    int minutes = totalTime / 60;
+                    int seconds = totalTime % 60;
+                    Console.WriteLine($"Total time for {numOfPic} pictures: {minutes} minutes and {seconds} seconds.");
+                }
+              
             }
         }
     }
