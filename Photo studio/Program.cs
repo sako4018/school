@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +12,10 @@ namespace Photo_studio
     {
         static void Main(string[] args)
         {
+            Presentation presentation = new Presentation();
+            presentation.Present();
+            //
+            Console.ReadKey();
         }
     }
 }
