@@ -1,0 +1,15 @@
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/bin/Debug/net7.0/hotel-prices
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/bin/Debug/net7.0/hotel-prices.deps.json
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/bin/Debug/net7.0/hotel-prices.runtimeconfig.json
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/bin/Debug/net7.0/hotel-prices.dll
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/bin/Debug/net7.0/hotel-prices.pdb
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/hotel-prices.csproj.AssemblyReference.cache
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/hotel-prices.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/hotel-prices.AssemblyInfoInputs.cache
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/hotel-prices.AssemblyInfo.cs
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/hotel-prices.csproj.CoreCompileInputs.cache
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/hotel-prices.dll
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/refint/hotel-prices.dll
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/hotel-prices.pdb
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/hotel-prices.genruntimeconfig.cache
+/Users/sarkis/Desktop/Developer/училище/Разработка на софтуер/hotel-prices/obj/Debug/net7.0/ref/hotel-prices.dll
