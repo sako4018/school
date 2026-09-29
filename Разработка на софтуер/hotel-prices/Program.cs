@@ -4,6 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Presentation presentation = new Presentation();
+        presentation.Present();
+
+        //
+        Console.ReadKey();
     }
 }
