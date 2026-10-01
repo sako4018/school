@@ -8,6 +8,7 @@ public class Car
     public string Model{get;private set;}
     public static int Count{get;private set;}
 
+    //
     public Car(int year, string model)
     {
         if(year < 1800 || year > DateTime.Now.Year)
