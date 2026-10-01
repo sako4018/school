@@ -35,6 +35,21 @@ class Program
             double averagePoints = totalPoints / players.Count;
             Console.WriteLine($"Average Points: {averagePoints}");
         }
+        Console.WriteLine("Enter a player's name to search: ");
+        string searchName = Console.ReadLine();
+        foreach(Player player in players)
+        {
+            if(player.Name == searchName)
+            {
+                Console.WriteLine($"Player found: {player.Name}, Points: {player.Points}");
+                return;
+            }
+            else if(player.Name != searchName)
+            {
+                Console.WriteLine($"{searchName} not found.");
+            }
+        }
+        
 
     }
 }
