@@ -15,5 +15,25 @@ public class Tip
         Amount = 0;
         TipPercentage = 0;
     }
+    public bool IsValid()
+    {
+        if ((Amount <= 0 || TipPercentage >= 100000) && (TipPercentage < 0 || TipPercentage > 100))
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+    public decimal CalculateTip()
+    {
+        return Amount * (TipPercentage / 100);
+    }
 
+    public decimal CalculateTotal()
+    {
+        decimal total = Amount + CalculateTip();
+        return total;
+    }
 }
