@@ -2,26 +2,42 @@
 
 class Program
 {    
+    static List<BankAccount> accounts = new List<BankAccount>();
     static void Main(string[] args)
     {
         Console.WriteLine("--- Welcome to the Bank System! ---");
-        Console.WriteLine("Please enter your name or create a new bank account.");
-        string name = Console.ReadLine();
-        if name == BankAccount.Owner
+        Console.WriteLine("1. Create Account");
+        Console.WriteLine("2. Deposit");
+        Console.WriteLine("3. Withdraw");
+        Console.WriteLine("4. Check Balance");
+        Console.WriteLine("5. Print Account Info");
+
+        Console.WriteLine("Enter your choice (1-5): ");
+        int choice = int.Parse(Console.ReadLine());
+
+        if(choice == 1)
         {
-            Console.WriteLine($"Welcome back, {name}!");
+            BankAccount newAccount = new BankAccount();
+        }
+        else if(choice == 2)
+        {
+            
+        }
+        else if(choice == 3)
+        {
+            
+        }
+        else if(choice == 4)
+        {
+            
+        }
+        else if(choice == 5)
+        {
+            
         }
         else
         {
-            Console.WriteLine($"Hello, {name}! Let's create a new bank account for you.");
-            BankAccount account = new BankAccount(name);
-            Console.WriteLine($"Bank account created for {account.Owner} with initial balance of {account.Balance}.");
-        }
-        BankAccount account = new BankAccount();
-        Console.WriteLine("Enter the account owner: ");
-        string owner = Console.ReadLine();
-        account = new BankAccount(owner);
-
+            Console.WriteLine("Invalid choice.");
     }
 }
 /*Ниво 1: Основа (клас и капсулация)
