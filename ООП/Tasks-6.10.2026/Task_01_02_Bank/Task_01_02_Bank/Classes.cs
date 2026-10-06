@@ -46,5 +46,26 @@ class Bank
         }
         return null;
     }
+    public bool RegisterCustomer(Customer customer)
+    {
+        if(customer.CustomerId <=0 || customer == null)
+        {
+            return false;
+        }
+        if (FindCustomerById(customer.CustomerId) != null)
+        {
+            return false;
+        }
+        customers.Add(customer);
+        return true;
+    }
+    public bool CreateAccount(string number, int customerId, CurrencyType currency)
+    {
+        if(number == null)
+        {
+            return 
+        }
+    }
+
     
 }
