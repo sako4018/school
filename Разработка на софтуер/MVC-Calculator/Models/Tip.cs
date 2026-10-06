@@ -36,4 +36,5 @@ public class Tip
         decimal total = Amount + CalculateTip();
         return total;
     }
+    
 }
