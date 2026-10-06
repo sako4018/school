@@ -77,4 +77,28 @@ class Bank
         accounts.Add(account);
         return true;
     }
+    public bool Deposit(string number, decimal amount)
+    {
+        Account account = FindAccountByNumber(number);
+        if(account == null || amount <= 0)
+        {
+            return false;
+        }
+        account.Balance += amount;
+        return true;
+    }
+    public bool Withdraw(string number, decimal amount)
+    {
+        Account account = FindAccountByNumber(number);
+        if(account == null || amount <= 0)
+        {
+            return false;
+        }
+        if(account.Balance < amount)
+        {
+            return false;
+        }
+        account.Balance -= amount;
+        return true;
+    }
 }
