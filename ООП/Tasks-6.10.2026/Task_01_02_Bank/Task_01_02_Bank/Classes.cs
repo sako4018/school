@@ -7,17 +7,17 @@ enum CurrencyType
 }
 class Customer
 {
-    public int CustomerId { get; private set; }
-    public string Name { get; private set; }
-    public decimal Address { get; private set; }
-    public string PhoneNumber { get; private set; }
+    public int CustomerId { get;  set; }
+    public string Name { get;  set; }
+    public decimal Address { get;  set; }
+    public string PhoneNumber { get;  set; }
 }
 class Account
 {
-    public string AccountNumber { get; private set; }
-    public int CustomerId { get; private set; }
-    public decimal Balance { get; private set; }
-    public CurrencyType Currency { get; private set; }
+    public string AccountNumber { get;  set; }
+    public int CustomerId { get;  set; }
+    public decimal Balance { get;  set; }
+    public CurrencyType Currency { get;  set; }
 }
 class Bank
 {
@@ -61,11 +61,20 @@ class Bank
     }
     public bool CreateAccount(string number, int customerId, CurrencyType currency)
     {
-        if(number == null)
+        if(number == null || number == "")
         {
-            return 
+            return false; 
         }
+        if(FindCustomerById(customerId) == null || FindAccountByNumber(number) != null)
+        {
+            return false;
+        }
+        Account account = new Account();
+        account.AccountNumber = number;
+        account.CustomerId = customerId;
+        account.Balance = 0;
+        account.Currency = currency;
+        accounts.Add(account);
+        return true;
     }
-
-    
 }
