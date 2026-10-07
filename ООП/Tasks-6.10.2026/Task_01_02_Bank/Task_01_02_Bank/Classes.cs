@@ -70,7 +70,7 @@ class Bank
             return false;
         }
         Account account = new Account();
-        account.AccountNumber = number;
+        account.AccountNumber = number; 
         account.CustomerId = customerId;
         account.Balance = 0;
         account.Currency = currency;

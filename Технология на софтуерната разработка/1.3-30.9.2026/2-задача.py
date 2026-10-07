@@ -1,7 +1,7 @@
 #fibonacci
 n = int(input("Enter number n: "))
 
-if n > 0:
+if n <=0:
     print("Enter number > 0")
 
 elif n == 1:
