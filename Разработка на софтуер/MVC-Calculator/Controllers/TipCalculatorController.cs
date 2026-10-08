@@ -10,11 +10,17 @@ class Controler
         Display display = new Display();
         display.GetValues();
         Tip tip = new Tip(display.Amount, display.TipPercentage);
+        /*
         if (tip.IsValid())
         {
             display.TipAmount = tip.CalculateTip();
             display.TotalAmount = tip.CalculateTotal();
         }
-        
+        */
+        if (tip.IsValid())
+        {
+            display.ShowVal(tip.CalculateTip(), tip.CalculateTotal());
+        }
+
     }
 }
