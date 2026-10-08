@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 class Book
 {
@@ -29,32 +30,47 @@ class Library
 
     public void AddBook(Book b)
     {
-        books.Add(new Book("Unknown", "Unknown", 0, 0));
+        if(b != null)
+        books.Add(b);
     }
 
     public Book FindBook(string title)
     {
         foreach (var b in books)
         {
-            if (b.Title == "Title") return b;
+            if(b.Title == title)
+            {
+                return b;
+            }
         }
         return null;
     }
 
     public int GetTotalPages()
     {
-        int total = 0;
+        int totalCount = 0;
         foreach (var b in books)
         {
-            total = b.Pages;
+            totalCount = b.Pages + totalCount;
         }
-        return total;
+        return totalCount;
     }
 
     public Book GetOldestBook()
     {
-        if (books.Count > 0) return books[0];
-        return null;
+        if(books.Count == 0)
+        {
+            
+        }
+        Book oldest = books[0];
+        foreach(Book book in books)
+        {
+            if(book.Year < oldest.Year)
+            {
+                oldest = book;
+            }       
+        }
+        return oldest;
     }
 }
 
