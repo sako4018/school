@@ -3,10 +3,10 @@ using MVC_Calculator.Models;
 namespace MVC_Calculator.Views;
 public class Display
 {
-    public decimal Amount {get; private set;}
-    public decimal TipPercentage {get; private set;}
-    public decimal TipAmount {get; private set;}
-    public decimal TotalAmount {get; private set;}
+    public decimal Amount {get;  set;}
+    public decimal TipPercentage {get;  set;}
+    public decimal TipAmount {get;  set;}
+    public decimal TotalAmount {get;  set;}
 
     Tip tip = new Tip();
     public void GetValues()
@@ -16,19 +16,11 @@ public class Display
         Console.Write("Enter tip percentage: ");
         TipPercentage = Convert.ToDecimal(Console.ReadLine());
     }
-    public void ShowVal()
+    public void ShowVal(decimal tipAmount, decimal totalAmount)
     {
-        tip = new Tip(TotalAmount, TipAmount);
-        if (tip.IsValid())
-        {   
-            TipAmount = tip.CalculateTip();
-            TotalAmount = tip.CalculateTotal();
-            Console.WriteLine($"Tip amount: {TipAmount:F2}");
-            Console.WriteLine($"Total amount: {TotalAmount:F2}");
-        }
-        else
-        {
-            Console.WriteLine("Invalid input. Please enter a valid amount and tip percentage.");
-        }
+        TipAmount = tipAmount;
+        TotalAmount = totalAmount;
+        Console.WriteLine($"Tip amount: {TipAmount:F2}");
+        Console.WriteLine($"Total amount: {TotalAmount:F2}");
     }
 }
