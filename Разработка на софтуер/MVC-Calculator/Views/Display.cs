@@ -20,7 +20,7 @@ public class Display
     {
         tip = new Tip(TotalAmount, TipAmount);
         if (tip.IsValid())
-        {   г
+        {   
             TipAmount = tip.CalculateTip();
             TotalAmount = tip.CalculateTotal();
             Console.WriteLine($"Tip amount: {TipAmount:F2}");

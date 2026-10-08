@@ -6,7 +6,7 @@ namespace Task_01_02_Bank
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            
         }
     }
 }
