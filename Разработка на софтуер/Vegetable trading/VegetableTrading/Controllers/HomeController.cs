@@ -1,31 +1,16 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using VegetableTrading.Models;
-
-namespace VegetableTrading.Controllers;
-
-public class HomeController : Controller
+class Controler
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public void Run()
     {
-        _logger = logger;
-    }
+        Display display = new Display();
+        display.GetValues();
+        Model model = new Model();
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        if (model.IsValid())
+        {
+            display.ShowVal(model.CalculateInEuro);
+            
+        }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }
