@@ -9,8 +9,8 @@ class Controler
         if (model.IsValid())
         {
             display.ShowVal(model.CalculateInEuro);
-            
+
         }
 
-    }
+    }       
 }
