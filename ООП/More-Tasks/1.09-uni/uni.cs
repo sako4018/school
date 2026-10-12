@@ -1,4 +1,6 @@
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 
 class Student
 {
@@ -52,6 +54,30 @@ class University
             
         }
         return null;
-
+    }
+    public Student RemoveStudent(string fn)
+    {
+        foreach(Student student in students)
+        {
+            if(student.Fnumber == fn)
+            {
+                student.Name.Remove();
+                student.Fnumber.Remove();
+                student.Grade.Remove();
+                student.Year.Remove();
+            }
+        }
+        return null;
+    }
+    public Student FindStudent(string fn)
+    {
+        foreach(Student student in students)
+        {
+            if(student.Fnumber == fn)
+            {
+                return student;
+            }
+        }
+        return null;
     }
 }
