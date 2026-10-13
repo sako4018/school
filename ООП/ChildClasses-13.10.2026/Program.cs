@@ -6,7 +6,7 @@ namespace ChildClasses
 
     class Person
     {
-        public string Name{get;set;}
+        public string Name{get;private set;}
         public Person(string name)
         {
             Name = name;
@@ -18,7 +18,7 @@ namespace ChildClasses
     }
     class Teacher : Person
     {
-        public string School{get;set;}
+        public string School{get;private set;}
         public Teacher(string school,string name):base(name)
         {
             School = school;
@@ -31,7 +31,7 @@ namespace ChildClasses
     }
     class Student : Person
     {
-        public string Grade{get;set;}
+        public string Grade{get;private set;}
         public Student(string grade, string name) :base(name)
         {
             Grade = grade;
