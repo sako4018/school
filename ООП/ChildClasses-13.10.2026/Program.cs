@@ -13,7 +13,7 @@ namespace ChildClasses
         }
         public void Display()
         {
-            System.Console.WriteLine(Name);
+            System.Console.WriteLine($"My name is: {Name}");
         }
     }
     class Teacher : Person
@@ -48,7 +48,7 @@ namespace ChildClasses
             Student student = new Student("11", "Sarkis");
             student.Display();
             student.DisplayGrade();
-
+            Console.WriteLine(student.Name);
             Teacher teacher = new Teacher("PGEE","Ivan");
             teacher.Display();
             teacher.DisplaySchool();
