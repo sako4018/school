@@ -62,11 +62,9 @@ public class Model
         return 0;
     }
 
-    // Цена = единична цена * количество
     public double Calculate()
     {
         double price = Prices() * Quantity;
-        // Закръгляме, защото double понякога дава 7.1999999999 вместо 7.2
         return Math.Round(price, 10);
     }
 }

@@ -36,13 +36,12 @@ public class Model
         }
     }
 
-    // Връща Late / On time / Early и пълни Details
     public string Calculate()
     {
         // Всичко в минути от началото на деня
         int exam = ExamHour * 60 + ExamMinute;
         int arrive = ArriveHour * 60 + ArriveMinute;
-        int difference = exam - arrive;   // > 0 подранил, < 0 закъснял
+        int difference = exam - arrive;   
 
         string status;
         if (difference < 0)
@@ -78,7 +77,6 @@ public class Model
         }
         else
         {
-            // Минутите винаги с 2 цифри: 1:05, а не 1:5
             string mm = minutes.ToString();
             if (minutes < 10)
             {
