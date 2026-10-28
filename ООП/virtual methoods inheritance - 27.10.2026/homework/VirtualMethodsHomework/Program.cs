@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.ConstrainedExecution;
 
 namespace VirtualMethodsHomework
 {
@@ -39,6 +40,7 @@ namespace VirtualMethodsHomework
             else
             {
                 return false;
+
             }
         }
         public virtual void Accelerate(int increment)
