@@ -54,7 +54,7 @@ namespace HeroesGame
 
     class Knight : Hero 
     {
-        public Knight(string name, ...) : base(name, ...)
+        public Knight()
         {
             
         }
