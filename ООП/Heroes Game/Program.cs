@@ -20,7 +20,7 @@ namespace HeroesGame
         public int Shield{get;private set;}
         public int Health{get;private set;}
         public int BattleWon{get;private set;}
-        public int TotalAttacks{get;private set;}
+        public int TotalAttacks{get;protected set;}
         public string MagicalItem{get;private set;}
         public int MagicalPower{get;private set;}
 
@@ -42,26 +42,54 @@ namespace HeroesGame
         }
         public virtual void Show()
         {
-            System.Console.WriteLine(Name);
+            Console.WriteLine(Name);
             System.Console.WriteLine(Attack);
             System.Console.WriteLine(Shield);
             System.Console.WriteLine(Health);
             System.Console.WriteLine(BattleWon);
         }
-
         
     }
 
     class Knight : Hero 
     {
-        public Knight()
+
+        public Knight(string name,int battlesWon,int totalAttacks,string magicalItem,int magicalPower):base(name, battlesWon, totalAttacks, magicalItem, magicalPower)
         {
             
+        }
+        public override void Show()
+        {
+            base.Show();
+        }
+        public bool Atatack(Hero target)
+        {
+            if(this.Health == 0)
+            {
+                return false;
+            }
+            else if(target.Health==0)
+            {
+                return false;
+            }
+            else
+            {
+                this.TotalAttacks += 1;
+                return true;
+
+            }
         }
     }
     class Wizard : Hero
     {
-        
+        public Wizard(string name,int battlesWon,int totalAttacks,string magicalItem,int magicalPower):base(name, battlesWon, totalAttacks, magicalItem, magicalPower)
+        {
+            
+        }
+        public override void Show()
+        {
+            base.Show();
+        }
     }
     class LowRankKnight : Hero
     {
