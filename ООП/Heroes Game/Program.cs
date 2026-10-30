@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime;
 using System.Runtime.CompilerServices;
 
 namespace HeroesGame
@@ -20,11 +22,11 @@ namespace HeroesGame
         public int Shield{get;private set;}
         public int Health{get;private set;}
         public int BattleWon{get;private set;}
-        public int TotalAttacks{get;protected set;}
+        public int TotalAttacks{get;private set;}
         public string MagicalItem{get;private set;}
         public int MagicalPower{get;private set;}
 
-        Random random = new Random();
+        static Random random = new Random();
         public Hero(string name,int battlesWon,int totalAttacks,string magicalItem,int magicalPower)
         {
             Name = name;
@@ -48,7 +50,29 @@ namespace HeroesGame
             System.Console.WriteLine(Health);
             System.Console.WriteLine(BattleWon);
         }
-        
+        public bool Atatack(Hero target)
+        {
+            if(Health == 0)
+            {
+                return false;
+            }
+            else if(target.Health==0)
+            {
+                return false;
+            }
+            else
+            {
+                TotalAttacks += 1;
+                return true;
+
+            }
+            
+        }
+
+        public int Damage(Hero Target)
+        {
+            return Math.Max(0, Attack + Shield - Target.Shield);
+        }
     }
 
     class Knight : Hero 
@@ -61,24 +85,14 @@ namespace HeroesGame
         public override void Show()
         {
             base.Show();
-        }
-        public bool Atatack(Hero target)
-        {
-            if(this.Health == 0)
+            if(MagicalItem != null && MagicalPower != 0)
             {
-                return false;
-            }
-            else if(target.Health==0)
-            {
-                return false;
-            }
-            else
-            {
-                this.TotalAttacks += 1;
-                return true;
+                System.Console.WriteLine($"MI = {MagicalItem}");
+                System.Console.WriteLine($"MP = {MagicalPower}");
 
             }
         }
+        
     }
     class Wizard : Hero
     {
@@ -95,8 +109,6 @@ namespace HeroesGame
     {
         
     }
-
-
 
     class Program
     {
