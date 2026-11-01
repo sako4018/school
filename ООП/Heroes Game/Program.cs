@@ -18,21 +18,22 @@ namespace HeroesGame
         private int magicalPower;
 
         public string Name{get;private set;}
-        public int Attack{get;private set;}
+        public int AttackPower{get;private set;}
         public int Shield{get;private set;}
         public int Health{get;private set;}
         public int BattleWon{get;private set;}
         public int TotalAttacks{get;private set;}
         public string MagicalItem{get;private set;}
         public int MagicalPower{get;private set;}
-
+        public int InitialHealth{get;private set;}
         static Random random = new Random();
         public Hero(string name,int battlesWon,int totalAttacks,string magicalItem,int magicalPower)
         {
             Name = name;
-            Attack = random.Next(50, 100);
+            AttackPower = random.Next(50, 100);
             Shield = random.Next(50, 100);
             Health = random.Next(50, 100);
+            InitialHealth = Health;
             BattleWon = 0;
             TotalAttacks = 0;
             MagicalItem = "";
@@ -45,12 +46,12 @@ namespace HeroesGame
         public virtual void Show()
         {
             Console.WriteLine(Name);
-            System.Console.WriteLine(Attack);
+            System.Console.WriteLine(AttackPower);
             System.Console.WriteLine(Shield);
             System.Console.WriteLine(Health);
             System.Console.WriteLine(BattleWon);
         }
-        public bool Atatack(Hero target)
+        public bool Attack(Hero target)
         {
             if(Health == 0)
             {
@@ -64,14 +65,18 @@ namespace HeroesGame
             {
                 TotalAttacks += 1;
                 return true;
-
             }
             
         }
 
         public int Damage(Hero Target)
         {
-            return Math.Max(0, Attack + Shield - Target.Shield);
+            return Math.Max(0, AttackPower + Shield - Target.Shield);
+        }
+
+        public int InitialHealthValue()
+        {
+            return Health = InitialHealth; 
         }
     }
 
