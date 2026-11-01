@@ -53,17 +53,16 @@ namespace HeroesGame
         }
         public bool Attack(Hero target)
         {
-            if(Health == 0)
-            {
-                return false;
-            }
-            else if(target.Health==0)
+            if(this.Health == 0 || target.Health == 0)
             {
                 return false;
             }
             else
             {
                 TotalAttacks += 1;
+                int damage = Math.Max(0,AttackPower + Shield - target.Shield);
+                target.Health = Math.Max(0, target.Health - damage);
+            
                 return true;
             }
             
@@ -108,12 +107,26 @@ namespace HeroesGame
         public override void Show()
         {
             base.Show();
+            if(MagicalItem != null && MagicalPower != 0)
+            {
+                System.Console.WriteLine($"MI = {MagicalItem}");
+                System.Console.WriteLine($"MP = {MagicalPower}");
+
+            }
         }
     }
-    class LowRankKnight : Hero
+    class LowRankKnight : Knight
     {
-        
+        public LowRankKnight(string name,int battlesWon,int totalAttacks,string magicalItem,int magicalPower):base(name, battlesWon, totalAttacks, magicalItem, magicalPower)
+        {
+            
+        }
+        public override void Show()
+        {
+            base.Show();
+        }
     }
+        
 
     class Program
     {
