@@ -44,6 +44,19 @@ namespace HeroesGame
         {
             
         }
+        protected Hero(Hero other)
+        {
+            Name = other.Name;
+            AttackPower = other.AttackPower;
+            Shield = other.Shield;
+            Health = other.Health;
+            InitialHealth = other.InitialHealth;
+            BattleWon = other.BattleWon;
+            TotalAttacks = other.TotalAttacks;
+            MagicalItem = other.MagicalItem;
+            MagicalPower = other.MagicalPower;
+        }
+
         public virtual void Show()
         {
             Console.WriteLine(Name);
@@ -99,6 +112,13 @@ namespace HeroesGame
                 }
                 (attacker, defender) = (defender, attacker);
             }
+            Hero winner = Duel(knight, wizard);
+            if (winner == knight)
+            {
+                knight.TakeMagicFrom(wizard);
+            }
+            knight.Show();
+            wizard.Show();
         }
 
         public void TakeMagicFrom(Hero loser)
@@ -127,6 +147,8 @@ namespace HeroesGame
 
             }
         }
+        public Knight(string name) : base(name) { }
+        public Knight(Hero other) : base(other) { }
         
     }
     class Wizard : Hero
@@ -169,6 +191,13 @@ namespace HeroesGame
         {
             base.Show();
         }
+        public bool BattleForKnight(LowRankKnight otherKnight)
+        {
+            Health = InitialHealth;         
+            Hero winner = Duel(this, otherKnight);
+            return winner == this;
+        }
+        public LowRankKnight(string name) : base(name) { }
     }
         
 
@@ -176,7 +205,21 @@ namespace HeroesGame
     {
         static void Main(string[] args)
         {
-            
+            LowRankKnight candidate = new LowRankKnight("Кандидат");
+            Knight playerKnight = null;   // попълва се след повишаването
+
+            while (true)
+            {
+                Console.WriteLine("1 - Рицар срещу магьосник");
+                Console.WriteLine("2 - Двубой за рицарско звание");
+                Console.WriteLine("0 - Край");
+                string choice = Console.ReadLine();
+
+                if (choice == "0") break;
+                else if (choice == "1") { /* режим 1 */ }
+                else if (choice == "2") { /* режим 2 */ }
+                else Console.WriteLine("Невалиден избор.");
+            }
         }
     }
 }
