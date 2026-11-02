@@ -100,6 +100,14 @@ namespace HeroesGame
                 (attacker, defender) = (defender, attacker);
             }
         }
+
+        public void TakeMagicFrom(Hero loser)
+        {
+            MagicalItem = loser.MagicalItem;
+            MagicalPower = loser.MagicalPower;
+            loser.MagicalItem = "";
+            loser.MagicalPower = 0;
+        }
     }
 
     class Knight : Hero 
