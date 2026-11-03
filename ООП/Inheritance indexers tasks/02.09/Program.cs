@@ -38,6 +38,20 @@ namespace Task_02_09
 
         }
         public int Count{get{return entries.Count;}}
+        ParkingEntry this[int index]
+        {
+            get
+            {
+                if(index < 0 || index >= entries.Count)
+                {
+                    throw new IndexOutOfRangeException("Index is out of range.");
+                }
+                else
+                {
+                    return entries[index];
+                }
+            }
+        }
         public void AddEntry(int vehicleNumber, int minutes)
         {
             if((vehicleNumber >= 1000 && vehicleNumber < 5000) && ((minutes >= 30 && minutes <= 180)))
@@ -50,6 +64,20 @@ namespace Task_02_09
             {
                 throw new ArgumentException("Invalid vehicle number or minutes.");
             }
+        }
+    }
+    class ParkingMachineForCar : ParkingMachine
+    {
+        public ParkingMachineForCar(decimal hourlyRate) : base(hourlyRate)
+        {
+            hourlyRate = 3.00m;
+        }
+    }
+    class ParkingMachineForBus : ParkingMachine
+    {
+        public ParkingMachineForBus(decimal hourlyRate) : base(hourlyRate)
+        {
+            hourlyRate = 6.00m;
         }
     }
 
