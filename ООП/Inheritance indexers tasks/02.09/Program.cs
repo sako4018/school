@@ -4,6 +4,7 @@ namespace Task_02_09
 {
     class ParkingEntry
     {
+        static Random random = new Random();
         public int VehicleNumber {get;}
         public int Minutes{get;}
         public decimal Price {get;}
@@ -75,7 +76,7 @@ namespace Task_02_09
     }
     class ParkingMachineForBus : ParkingMachine
     {
-        public ParkingMachineForBus(decimal hourlyRate) : base(hourlyRate)
+        public ParkingMachineForBus(decimal hourlyRatge) : base(hourlyRate)
         {
             hourlyRate = 6.00m;
         }
