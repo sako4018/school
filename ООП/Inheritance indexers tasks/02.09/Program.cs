@@ -33,7 +33,7 @@ namespace Task_02_09
             if(hourlyRate < 0)
             {
                 throw new ArgumentException("Hourly rate cannot be negative.");
-            }I
+            }
             else
             {
                 this.hourlyRate = hourlyRate;
