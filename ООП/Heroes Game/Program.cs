@@ -22,11 +22,11 @@ namespace HeroesGame
         public string Name{get;private set;}
         public int AttackPower{get;private set;}
         public int Shield{get;private set;}
-        public int Health{get;private set;}
+        public int Health{get;protected set;}
         public int BattleWon{get;private set;}
         public int TotalAttacks{get;private set;}
-        public string MagicalItem{get;private set;}
-        public int MagicalPower{get;private set;}
+        public string MagicalItem{get;protected set;}
+        public int MagicalPower{get;protected set;}
         public int InitialHealth{get;private set;}
         public Hero(string name,int battlesWon,int totalAttacks,string magicalItem,int magicalPower)
         {
@@ -40,9 +40,9 @@ namespace HeroesGame
             MagicalItem = "";
             MagicalPower = 0;
         }
-        public Hero():this("noname", 0, 0, " ", 0)
+        public Hero(string name):this(name, 0, 0, "", 0)
         {
-            
+
         }
         protected Hero(Hero other)
         {
@@ -75,15 +75,27 @@ namespace HeroesGame
             {
                 int before = target.Health;
                 TotalAttacks += 1;
-                int damage = Math.Max(0,AttackPower + Shield - target.Shield);
+                int damage = CalculateDamage(target);
                 target.Health = Math.Max(0, target.Health - damage);
                 if(before > 0 && target.Health == 0)
                 {
                     BattleWon += 1;
+                    return true;
                 }
-                return true;
+                else
+                {
+                    return false;
+                }
             }
-            
+
+        }
+        public int CalculateDamage(Hero target)
+        {
+            return Math.Max(0, AttackPower + Shield - target.Shield);
+        }
+        public void RestoreHealth()
+        {
+            Health = InitialHealth;
         }
         public int CalculateBatttleWon()
         {
@@ -94,31 +106,29 @@ namespace HeroesGame
             Console.WriteLine(TotalAttacks + BattleWon);
         }
 
-        static Hero Duel(Hero hero1, Hero hero2)
+        public static Hero Duel(Hero hero1, Hero hero2)
         {
-            if(hero1.Attack(hero2) == 0 && hero2.Attack(hero1) == 0)
+            // Ако и двамата нанасят 0 щета, двубоят е равен
+            if(hero1.CalculateDamage(hero2) == 0 && hero2.CalculateDamage(hero1) == 0)
             {
+                Console.WriteLine("Равенство: и двамата нанасят 0 щета.");
                 return null;
             }
             Hero attacker = hero1;
             Hero defender = hero2;
             while (hero1.Health > 0 && hero2.Health > 0)
             {
-                int dmg = attacker.Attack(defender);
+                int dmg = attacker.CalculateDamage(defender);
                 bool won = attacker.Attack(defender);
+                Console.WriteLine($"{attacker.Name} нанася {dmg} щета. {defender.Name} има {defender.Health} здраве.");
                 if (won)
                 {
+                    Console.WriteLine($"Победител: {attacker.Name}");
                     return attacker;
                 }
                 (attacker, defender) = (defender, attacker);
             }
-            Hero winner = Duel(knight, wizard);
-            if (winner == knight)
-            {
-                knight.TakeMagicFrom(wizard);
-            }
-            knight.Show();
-            wizard.Show();
+            return null;
         }
 
         public void TakeMagicFrom(Hero loser)
@@ -155,9 +165,8 @@ namespace HeroesGame
     {
         public Wizard(string name, string item) : base(name)
         {
-            string magicalItem = item;
-            Random random = new Random();
-            int magicalPower = random.Next(1, 100);
+            MagicalItem = item;
+            MagicalPower = random.Next(1, 100);
         }
         public override void Show()
         {
@@ -198,6 +207,13 @@ namespace HeroesGame
             return winner == this;
         }
         public LowRankKnight(string name) : base(name) { }
+        public Knight PromoteToKnight()
+        {
+        if (BattleWon < 3)
+            throw new InvalidOperationException("Нужни са 3 победи за рицарско звание.");
+        return new Knight(this);
+        }
+
     }
         
 
@@ -216,8 +232,59 @@ namespace HeroesGame
                 string choice = Console.ReadLine();
 
                 if (choice == "0") break;
-                else if (choice == "1") { /* режим 1 */ }
-                else if (choice == "2") { /* режим 2 */ }
+                else if (choice == "1")
+                {
+                    // След повишаването играта продължава с върнатия рицар
+                    Knight knight;
+                    if (playerKnight != null)
+                    {
+                        playerKnight.RestoreHealth();
+                        knight = playerKnight;
+                    }
+                    else
+                    {
+                        knight = new Knight("Рицар");
+                    }
+
+                    Wizard wizard = new Wizard("Магьосник", "Жезъл");
+                    wizard.UseMagicalItem();
+
+                    Hero winner = Hero.Duel(knight, wizard);
+                    if (winner == knight)
+                    {
+                        knight.TakeMagicFrom(wizard);
+                    }
+                    knight.Show();
+                    wizard.Show();
+                }
+                else if (choice == "2")
+                {
+                    if (playerKnight != null)
+                    {
+                        Console.WriteLine("Вече имаш рицарско звание.");
+                        playerKnight.Show();
+                    }
+                    else
+                    {
+                        LowRankKnight opponent = new LowRankKnight("Противник");
+                        bool won = candidate.BattleForKnight(opponent);
+                        if (won)
+                        {
+                            Console.WriteLine($"Спечели двубоя. Победи: {candidate.CalculateBatttleWon()} от 3");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Няма победа. Победи: {candidate.CalculateBatttleWon()} от 3");
+                        }
+
+                        if (candidate.CalculateBatttleWon() >= 3)
+                        {
+                            playerKnight = candidate.PromoteToKnight();
+                            Console.WriteLine("Получи рицарско звание!");
+                            playerKnight.Show();
+                        }
+                    }
+                }
                 else Console.WriteLine("Невалиден избор.");
             }
         }
