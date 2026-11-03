@@ -40,15 +40,15 @@ namespace Task_02_09
         public int Count{get{return entries.Count;}}
         public void AddEntry(int vehicleNumber, int minutes)
         {
-           if((vehicleNumber >= 1000 && vehicleNumber < 5000) && ((minutes >= 30 && minutes <= 180)))
+            if((vehicleNumber >= 1000 && vehicleNumber < 5000) && ((minutes >= 30 && minutes <= 180)))
             {
-                decimal price = CalculatePrice(minutes);
+                decimal price = minutes / 60.0m * hourlyRate; 
                 ParkingEntry entry = new ParkingEntry(vehicleNumber, minutes, price);
-                entries.Add(entry);           
+                entries.Add(entry);
             }
-           else
+            else
             {
-               throw new ArgumentException("Invalid vehicle number or minutes.");
+                throw new ArgumentException("Invalid vehicle number or minutes.");
             }
         }
     }
