@@ -15,9 +15,11 @@ namespace Task_02_09
             Minutes = minutes;
             Price = price;
         }
-        public ParkingEntry():this(0, 0, 0)
+        public ParkingEntry()
         {
-            
+            VehicleNumber = random.Next(1000, 5000);
+            Minutes = random.Next(30, 181);
+            Price = Minutes / 60.0m * 3.00m;
         }
 
 
@@ -31,7 +33,7 @@ namespace Task_02_09
             if(hourlyRate < 0)
             {
                 throw new ArgumentException("Hourly rate cannot be negative.");
-            }
+            }I
             else
             {
                 this.hourlyRate = hourlyRate;
@@ -76,7 +78,7 @@ namespace Task_02_09
     }
     class ParkingMachineForBus : ParkingMachine
     {
-        public ParkingMachineForBus(decimal hourlyRatge) : base(hourlyRate)
+        public ParkingMachineForBus(decimal hourlyRate) : base(hourlyRate)
         {
             hourlyRate = 6.00m;
         }
