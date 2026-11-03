@@ -19,19 +19,17 @@ namespace AssigmentThreadsType
             }
         }
 
-        // Background нишка – проверява дали името започва с гласна
-        static void CheckVowels()
+        static void CheckUpper()
         {
-            string vowels = "АЕИОУЪЮЯAEIOU";
+            string uppers = "АЕИОУЪЮЯAEIOU";
 
-            // изчаква малко, за да провери името, след като е изписано
             Thread.Sleep(250);
 
             for (int i = 0; i < names.Length; i++)
             {
                 char firstLetter = char.ToUpper(names[i][0]);
 
-                if (vowels.IndexOf(firstLetter) >= 0)
+                if (uppers.IndexOf(firstLetter) >= 0)
                 {
                     Console.WriteLine("Името " + names[i] + " започва с гласна! Генерирано от нишката " + foregroundThread.Name);
                 }
@@ -44,9 +42,9 @@ namespace AssigmentThreadsType
         {
             foregroundThread.Name = "ForegroundNames";
             foregroundThread.IsBackground = false;
-
-            Thread backgroundThread = new Thread(CheckVowels);
-            backgroundThread.Name = "BackgroundVowels";
+  
+            Thread backgroundThread = new Thread(CheckUpper);
+            backgroundThread.Name = "BackgroundUppers";
             backgroundThread.IsBackground = true;
 
             foregroundThread.Start();
