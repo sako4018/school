@@ -17,6 +17,14 @@ namespace Task_02_12
         {
             
         }
+        public virtual decimal GetPrice()
+        {
+            return this.Price;
+        }
+        public virtual string GetTicketInfo()
+        {
+            return $"Title: {Title}, Price: {Price}";
+        }
     }
     class Program
     {
