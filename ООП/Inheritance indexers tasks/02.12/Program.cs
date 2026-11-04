@@ -56,11 +56,21 @@ namespace Task_02_12
         }
 
     }
+
     class Program
     {
         static void Main(string[] args)
         {
+            Dictionary<string, decimal> performances = new Dictionary<string, decimal>
+            {
+                {"Hamlet", 20.0m},
+                {"Romeo and Juliet", 18.5m},
+                {"Macbeth", 22.0m},
+                {"Othello", 19.5m},
+                {"King Lear", 21.0m}
+            };
             
+            List<Ticket> tickets = new List<Ticket>();
         }
     }
 }
