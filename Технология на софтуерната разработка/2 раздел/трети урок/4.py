@@ -6,4 +6,4 @@ def print_primes_in_range(m, n):
     print(f"primes in range [{m}, {n}]: {primes}")
 
 print_primes_in_range(20, 60)
-
+    
