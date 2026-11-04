@@ -19,7 +19,9 @@ namespace Task_02_12
         }
         public virtual decimal GetPrice()
         {
+            
             return this.Price;
+
         }
         public virtual string GetTicketInfo()
         {
@@ -28,6 +30,10 @@ namespace Task_02_12
     }
     class DiscountedTicket : Ticket
     {
+        public DiscountedTicket() : base()
+        {
+            
+        }
         public decimal Discount { get; set;} = 0.5m;
         public DiscountedTicket(string title, decimal price, decimal discount) : base(title, price)
         {
@@ -35,12 +41,20 @@ namespace Task_02_12
         }
         public override decimal GetPrice()
         {
-            return this.Price - (this.Price * this.Discount);
+            if(age < 20 || age > 60)
+            {
+                return Price * Discount;
+            }
+            else
+            {
+                return this.Price;
+            }
         }
         public override string GetTicketInfo()
         {
-            return $"Title: {Title}, Price: {GetPrice()}, Discount: {Discount}";
+            return $"Title: {Title}, Price: {GetPrice()}, Discount: {Discount*100}%";
         }
+
     }
     class Program
     {
