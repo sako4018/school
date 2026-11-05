@@ -1,49 +1,23 @@
 using System;
 
-namespace BankAccount
+class Program
 {
-    public class BankAccount
+    static void Main(string[] args)
     {
-        public decimal Balance{get;private set;}
-        public BankAccount()
+        BankAccount account = new BankAccount();
+        System.Console.WriteLine("First deposit: ");
+        decimal first = decimal.Parse(Console.ReadLine());
+        System.Console.WriteLine("Second deposit: ");
+        decimal second = decimal.Parse(Console.ReadLine());
+        if (first > 0 && second > 0)
         {
-            Balance = 0m;
+            account.Deposit(first);
+            account.Deposit(second);
+            System.Console.WriteLine("Balance: {0:F2}", account.Balance);
         }
-        public BankAccount(decimal balance)
+        else
         {
-            if (balance < 0)
-            {
-                throw new ArgumentException("Negative balance. ");
-            }
-            Balance = balance;
-        }
-        public void Deposit(decimal amount)
-        {
-            if(amount <= 0)
-            {
-                throw new ArgumentException("Amount must be positive.");
-            }
-        }
-    }
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            BankAccount account = new BankAccount();
-            System.Console.WriteLine("First deposit: ");
-            decimal first = decimal.Parse(Console.ReadLine());
-            System.Console.WriteLine("Second deposit: ");
-            decimal second = decimal.Parse(Console.ReadLine());
-            if (first > 0 && second > 0)
-            {
-                account.Deposit(first);
-                account.Deposit(second);
-                System.Console.WriteLine("Balance: {0:F2}", account.Balance);
-            }
-            else
-            {
-                System.Console.WriteLine("Amount must be positive. ");
-            }
+            System.Console.WriteLine("Amount must be positive. ");
         }
     }
 }

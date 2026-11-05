@@ -1,22 +1,22 @@
 using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
-[TestClass]
+[TestFixture]
 public class BankTests
 {
-    [TestMethod]
+    [Test]
     public void Deposit_TwoAmounts_BalanceIs150()
     {
         BankAccount account = new BankAccount();
         account.Deposit(125m);
         account.Deposit(25m);
-        Assert.AreEqual(150m, account.Balance);
+        Assert.That(account.Balance, Is.EqualTo(150m));
     }
-    [TestMethood]
+    [Test]
     public void Constructor_BalanceIs2000()
     {
         BankAccount account = new BankAccount(2000m);
-        Assert.AreEqual(150m, account.Balance);
+        Assert.That(account.Balance, Is.EqualTo(2000m));
     }
-    
+
 }
