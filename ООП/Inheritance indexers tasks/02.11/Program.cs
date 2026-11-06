@@ -4,11 +4,19 @@ namespace Task_02_11
 {
     class Book
     {
-        public string Title {get; private set;}
-        public string Genre {get; private set;}
-        public int ID {get; private set;}
+        static int nextID = 1;
+        public string Title {get;}
+        public string Genre {get;}
+        public int ID {get;}
         
         static List<Book> AvailableBooks = new List<Book>();
+
+        public Book(string title, string genre)
+        {
+            Title = title;
+            Genre = genre;
+            ID = nextID ++;
+        }
         public virtual bool AddToCollection()
         {
             if(AvailableBooks.Count < 100)
@@ -25,14 +33,26 @@ namespace Task_02_11
     }
     class Book_Romance : Book
     {
+        public Book_Romance(string title): base(title, "romance")
+        {
+
+        }
         public string Author {get; private set;}
     }
     class CrimeBook : Book
     {
+        public CrimeBook(string title): base(title, "crime")
+        {
+            
+        }
         public string Author {get; private set;}
     }
     class Book_Science : Book
     {
+        public Book_Science(string title): base(title, "science")
+        {
+            
+        }
         public string Author {get; private set;}
     }
     class Program
