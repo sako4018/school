@@ -42,6 +42,28 @@ namespace Task_02_11
             }
 
         }
+        public void PrintAvailableBooks()
+        {
+            System.Console.WriteLine("AvailableBooks: ");
+            foreach(Book book in AvailableBooks)
+            {
+                System.Console.WriteLine($"{book.ID}, {book.Title}, {book.Genre}");
+            }
+            if(AvailableBooks.Count == 0)
+            {
+                System.Console.WriteLine("No book");
+            }
+        }
+        public static Book FindAvailable(int id)
+        {
+            foreach(Book book in AvailableBooks)
+            {
+                if(book.ID == id)
+                {
+                    return book;
+                }
+            }
+        }
     }
     class Book_Romance : Book
     {
@@ -115,12 +137,51 @@ namespace Task_02_11
             }
         }
     }
-    class
+    class StudentReader : Reader
+    {
+        public StudentReader(string name, string phone): base(name, phone)
+        {
+            
+        }
+        public override bool TakeBook(Book book)
+        {
+            bool success = base.TakeBook(book);
+            if (success)
+            {
+                Console.WriteLine($"{Name} is studying hard");
+            }
+            if(book.Genre == "Science")
+            {
+                System.Console.WriteLine("Science interest");
+            }
+            return success;
+        }
+    }
+    class RegularReader : Reader
+    {
+        public RegularReader(string name, string phone) : base(name, phone)
+        {
+            
+        }
+        public override bool TakeBook(Book book)
+        {
+            bool success = base.TakeBook(book);
+            if (success)
+            {
+                Console.WriteLine($"{Name} is studying hard");
+            }
+            if(book.Genre == "Science")
+            {
+                System.Console.WriteLine("Science interest");
+            }
+            return success;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            
+            Book romance = new Book_Romance(title, );
         }
     }
 }
