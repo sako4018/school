@@ -94,6 +94,28 @@ namespace Task_02_11
         }
         public string Author {get; private set;}
     }
+    class Reader
+    {
+        public string Name{get;set;}
+        public string Phone{get;set;}
+        public List<Book> Books {get;} = new List<Book>();
+        public Reader(string name, string phone)
+        {
+            Name = name;
+            Phone = phone;
+        }
+        public virtual bool TakeBook(Book book)
+        {
+            if ()
+            {
+                Book.AvailableBooks.Remove(book);
+                Books.Add(book);
+                System.Console.WriteLine($"{Name} takes {book.Title}");
+                return true;
+            }
+        }
+    }
+    class
     class Program
     {
         static void Main(string[] args)
