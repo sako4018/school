@@ -17,18 +17,7 @@ namespace Task_02_11
             Genre = genre;
             ID = nextID ++;
         }
-        public virtual bool AddToCollection()
-        {
-            if (AvailableBooks.Contains(this))
-            {
-                return false;
-            }
-            else
-            {
-                AvailableBooks.Add(this);
-                return true;
-            }
-        }
+       
         public virtual bool AddToCollection()
         {
             if(AvailableBooks.Count < 100)
