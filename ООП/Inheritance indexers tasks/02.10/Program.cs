@@ -21,21 +21,22 @@ namespace Task_02_10
         }
         class Part
         {
-            public string Name {get; private set;}
+            public string PartName {get; private set;}
             public decimal Price {get; private set;}
             public string Type {get; private set;}
         }
         class EnginePart : Part
         {
-          
+            public string PartEngine{get;private set;}
         }
         class ChassisPart : Part
         {
-          
+            public string PartChassis{get;private set;}
+
         }
         class BodyPart : Part
         {
-            
+            public string PartChassis{get;private set;}
         }
         static void Main(string[] args)
         {
