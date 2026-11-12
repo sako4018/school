@@ -27,20 +27,22 @@ namespace Task_02_10
         }
         class EnginePart : Part
         {
-            public string PartEngine{get;private set;}
+            
         }
         class ChassisPart : Part
         {
-            public string PartChassis{get;private set;}
 
         }
         class BodyPart : Part
         {
-            public string PartChassis{get;private set;}
+            
         }
         static void Main(string[] args)
         {
-            
+            List<Manufacturer> manufacturers = new List<Manufacturer>();
+            List<Car> cars = new List<Car>();
+            List<Part> parts = new List<Part>();
+
         }
     }
 }
