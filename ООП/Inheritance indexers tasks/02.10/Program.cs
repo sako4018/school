@@ -51,7 +51,7 @@ namespace Task_02_10
     class EnginePart : Part
     {
         public string EngineType{get;private set;}
-        public EnginePart(string partname, decimal price, Car car): base(partname, price, type)
+        public EnginePart(string partname, decimal price, Car car): base(partname, price, car)
         {
             
         }
@@ -59,7 +59,7 @@ namespace Task_02_10
     class ChassisPart : Part
     {
         public string PartChassis{get;private set;}
-        public ChassisPart(string partname, decimal price, Car car): base(partname, price, type)
+        public ChassisPart(string partname, decimal price, Car car): base(partname, price, car)
         {
             
         }
@@ -67,7 +67,7 @@ namespace Task_02_10
     class BodyPart : Part
     {
         public string PartBody{get;private set;}
-        public BodyPart(string partname, decimal price, Car car): base(partname, price, type)
+        public BodyPart(string partname, decimal price, Car car): base(partname, price, car)
         {
             
         }
@@ -81,6 +81,44 @@ namespace Task_02_10
             List<Car> cars = new List<Car>();
             List<Part> parts = new List<Part>();
 
+
+            Manufacturer renault = new Manufacturer(
+                "Renault", "France", "Paris", 0888123456, 123456);
+
+            Manufacturer bmw = new Manufacturer(
+                "BMW", "Germany", "Munich", 0888765432, 654321);
+
+            manufacturers.Add(renault);
+            manufacturers.Add(bmw);
+
+
+
+            Car renaultClio = new Car(
+                "Clio", "Red", renault, new DateTime(2020, 5, 15));
+
+            Car bmwX5 = new Car(
+                "X5", "Black", bmw, new DateTime(2022, 8, 20));
+
+            cars.Add(renaultClio);
+            cars.Add(bmwX5);
+
+
+
+            EnginePart filter = new EnginePart("Filter", 15.50m, renaultClio);
+            EnginePart sparkPlugs = new EnginePart("Spark plugs", 35.00m, bmwX5);
+
+            ChassisPart shockAbsorber = new ChassisPart("Shock absorber", 85.00m, bmwX5);
+            ChassisPart belt = new ChassisPart("Belt", 22.00m, renaultClio);
+
+            BodyPart bumper = new BodyPart("Bumper", 250.00m, bmwX5);
+            BodyPart fender = new BodyPart("Fender", 120.00m, renaultClio);
+
+            parts.Add(filter);
+            parts.Add(sparkPlugs);
+            parts.Add(shockAbsorber);
+            parts.Add(belt);
+            parts.Add(bumper);
+            parts.Add(fender);
         }
     }
 }
