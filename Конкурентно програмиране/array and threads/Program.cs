@@ -28,6 +28,9 @@ namespace ArrayAndThreads
             }
         }
 
+ //
+ //
+ 
         static void PrintNumbers()
         {
             string result = "All numbers: ";
