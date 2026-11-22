@@ -3,7 +3,6 @@ class StudentGrades
 {
     static void Main()
     {
-
         Console.WriteLine("Enter number of students:");
         int count = int.Parse(Console.ReadLine());
         double[] grades = new double[count];
