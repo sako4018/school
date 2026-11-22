@@ -6,7 +6,15 @@
 
 Интерфейси `IAnimal` и `IMammal`, класове `Snake`, `Lion`, `Bird` и `ConstrainByInterface<T>` с ограничение `where T : IAnimal`.
 
-Засега проектът е начална заготовка и извежда само `Hello World!`. Пълното условие е в Classroom, „final tasks(unit 3)“.
+Програмата няма вход. Изход:
+
+```text
+Snake has got tail
+Lion has got tail and baby_mammal
+Bird has got beak
+```
+
+Пълното условие е в Classroom, „final tasks(unit 3)“.
 
 ## Как се пуска
 
