@@ -19,5 +19,7 @@ class StudentGrades
         }
         double average = total / count;
         Console.WriteLine($"Average grade: {average}");
+        //
+        
     }
 }
