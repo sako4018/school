@@ -79,10 +79,10 @@ namespace HeroesGame
                 target.Health = Math.Max(0, target.Health - damage);
                 if(before > 0 && target.Health == 0)
                 {
+                    //
                     BattleWon += 1;
                     return true;
                 }
-                //
                 else
                 {
                     return false;
