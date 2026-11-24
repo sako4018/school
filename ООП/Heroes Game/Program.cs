@@ -82,6 +82,7 @@ namespace HeroesGame
                     BattleWon += 1;
                     return true;
                 }
+                //
                 else
                 {
                     return false;
