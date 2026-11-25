@@ -6,7 +6,7 @@ def add_expense(expenses, description, amount):
 
 def get_total_expenses(expenses):
     sum = 0
-    for expense in expense:
+    for expense in expenses:
         sum+=expense["amount"]
     return sum
 
