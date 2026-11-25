@@ -1,7 +1,7 @@
 import json
 
 def add_expense(expenses, description, amount):
-    expenses.append({"description": description, "amout": amount})
+    expenses.append({"description": description, "amount": amount})
     print(f"Added expences: {description}, Amout: {amount}")
 
 def get_total_expenses(expenses):
@@ -17,7 +17,7 @@ def show_budget_details(budget, expenses):
     print(f"Total budget: {budget}")
     print("Expenses: ")
     for expense in expenses:
-        print(f"- {expense['description']}: {expense['amont']}")
+        print(f"- {expense['description']}: {expense['amount']}")
     print(f"Total spent: {get_total_expenses(expense)}")
     print(f"Remaining budget: {get_balance(budget, expenses)}")
 
