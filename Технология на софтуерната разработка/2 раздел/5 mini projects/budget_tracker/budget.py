@@ -1,3 +1,5 @@
+import json
+
 def add_expense(expenses, description, amount):
     expenses.append({"description": description, "amout": amount})
     print(f"Added expences: {description}, Amout: {amount}")
