@@ -1,3 +1,5 @@
+import random
+
 words = [
     {"spanish": "el", "english": "the"},
     {"spanish": "de", "english": "of/from"},
@@ -30,9 +32,11 @@ def quiz_user(words):
 
         if user_answear == correct_answear:
             print("Correct!")
-            score + 1
+            score += 1
         else:
             print(f"Wrong!!! Answer is: {word['english']}")
+
+    print(f"You got {score} out of {len(words)} correct.")
 
 def main():
     print("Welcome to the Language Learning Flashcards App!")

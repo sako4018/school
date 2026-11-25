@@ -24,17 +24,17 @@ def run_quiz(questions):
     score = 0
     for question in questions:
         print(question["prompt"])
-        for option in question["option"]:
+        for option in question["options"]:
             print(option)
-        answer = input("Enter (A, B, C, D): ")
+        answer = input("Enter (A, B, C, D): ").strip().upper()
         if answer == question["answer"]:
             print("Correct, hooray!! \n")
             score += 1
 
         else:
-            print(f"wrong! LOSER! the correct answer is {question["answer"]}\n")
+            print(f"wrong! LOSER! the correct answer is {question['answer']}\n")
 
-    print(f"You gpt {score} out of {len(questions)} questions correct. ")
+    print(f"You got {score} out of {len(questions)} questions correct. ")
 
 
 run_quiz(questions)
