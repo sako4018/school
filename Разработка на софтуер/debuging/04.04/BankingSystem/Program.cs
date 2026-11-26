@@ -1,60 +1,60 @@
 using System;
-using System.Globalization; // FIX: needed for CultureInfo (decimal separator is always a dot)
+using System.Globalization; // 
 class BankAccount
 {
     public string Owner;
-    public decimal Balance; // FIX: decimal instead of double for money
-    public BankAccount(string owner, decimal balance) // FIX: decimal instead of double
+    public decimal Balance; // 
+    public BankAccount(string owner, decimal balance) // 
     {
         Owner = owner;
         Balance = balance;
     }
-    public void Deposit(decimal amount) // FIX: decimal instead of double
+    public void Deposit(decimal amount) // 
     {
         if (amount > 0)
         {
             Balance = Balance + amount;
-            Console.WriteLine($"Deposited {amount} successfully!");
+            Console.WriteLine($"Deposited {amount.ToString(CultureInfo.InvariantCulture)} successfully!"); //
         }
         else
         {
             Console.WriteLine("Deposit amount must be positive!");
         }
     }
-    public void Withdraw(decimal amount) // FIX: decimal instead of double
+    public void Withdraw(decimal amount) // 
     {
-        if (amount <= 0) // FIX: withdraw amount must be positive
+        if (amount <= 0) //
         {
             Console.WriteLine("Withdraw amount must be positive!");
         }
-        else if (amount > Balance) // FIX: cannot withdraw more than the balance (equal is allowed)
+        else if (amount > Balance) // 
         {
             Console.WriteLine("Insufficient funds!");
         }
         else
         {
             Balance -= amount;
-            Console.WriteLine($"Withdrawn {amount} successfully!");
+            Console.WriteLine($"Withdrawn {amount.ToString(CultureInfo.InvariantCulture)} successfully!"); // 
         }
     }
     public void ShowBalance()
     {
-        Console.WriteLine($"Current balance: {Balance} lv.");
+        Console.WriteLine($"Current balance: {Balance.ToString(CultureInfo.InvariantCulture)} lv."); // 
     }
 }
 class BankingSystem
 {
-    // FIX: reads an amount safely; returns false if the input is missing or not a number (no exception)
+    // 
     static bool ReadAmount(out decimal amount)
     {
-        Console.Write("Enter amount (use a dot, e.g. 12.50): "); // FIX: tell the user which decimal separator to use
+        Console.Write("Enter amount (use a dot, e.g. 12.50): "); // 
         string input = Console.ReadLine();
-        if (input == null) // FIX: end of input
+        if (input == null) // 
         {
             amount = 0;
             return false;
         }
-        if (!decimal.TryParse(input, NumberStyles.Number, CultureInfo.InvariantCulture, out amount)) // FIX: TryParse with a fixed culture instead of Parse
+        if (!decimal.TryParse(input, NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out amount)) // FIX: TryParse with a fixed culture and only a dot as separator (a comma is rejected)
         {
             Console.WriteLine("Invalid amount!");
             return false;
@@ -63,7 +63,7 @@ class BankingSystem
     }
     static void Main()
     {
-        BankAccount account = new BankAccount("Ivan", 500m); // FIX: 500m is a decimal
+        BankAccount account = new BankAccount("Ivan", 500m); // 
         string command = "";
         Console.WriteLine("Welcome to the Banking System!");
         Console.WriteLine("Available commands: deposit, withdraw, balance, quit");
@@ -71,22 +71,22 @@ class BankingSystem
         {
             Console.Write("> ");
             command = Console.ReadLine();
-            if (command == null) // FIX: end of input ends the loop
+            if (command == null) // 
             {
                 break;
             }
             if (command == "deposit")
             {
-                decimal amount; // FIX: decimal instead of double
-                if (ReadAmount(out amount)) // FIX: no crash on invalid input
+                decimal amount; // 
+                if (ReadAmount(out amount)) 
                 {
                     account.Deposit(amount);
                 }
             }
             else if (command == "withdraw")
             {
-                decimal amount; // FIX: decimal instead of double
-                if (ReadAmount(out amount)) // FIX: no crash on invalid input
+                decimal amount; // 
+                if (ReadAmount(out amount)) //
                 {
                     account.Withdraw(amount);
                 }
@@ -95,7 +95,7 @@ class BankingSystem
             {
                 account.ShowBalance();
             }
-            else if (command == "quit") // FIX: quit must not print "Unknown command!"
+            else if (command == "quit") // 
             {
             }
             else
