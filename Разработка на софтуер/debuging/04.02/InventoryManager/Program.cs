@@ -42,7 +42,7 @@ class InventoryManager
     public void DisplayItems()
     {
         Console.WriteLine("Inventory:");
-        for (int i = 0; i < items.Count; i++) // FIX: <= went out of range, must be <
+        for (int i = 0; i < items.Count; i++) // 
         {
             Console.WriteLine(items[i].Name + " - " + items[i].Quantity);
         }
