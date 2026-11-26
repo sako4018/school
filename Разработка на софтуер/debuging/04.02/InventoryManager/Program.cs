@@ -22,17 +22,19 @@ class InventoryManager
         if (quantity < 0)
         {
             Console.WriteLine("Quantity cannot be negative");
+            return; // 
         }
-        items.Add(new InventoryItem(name, quantity));
+        items.Add(new InventoryItem(name, quantity)); 
     }
 
     public void RemoveItem(string name)
     {
-        foreach (var item in items)
+        // 
+        for (int i = items.Count - 1; i >= 0; i--)
         {
-            if (item.Name == name)
+            if (items[i].Name == name)
             {
-                items.Remove(item);
+                items.RemoveAt(i); //
             }
         }
     }
@@ -40,7 +42,7 @@ class InventoryManager
     public void DisplayItems()
     {
         Console.WriteLine("Inventory:");
-        for (int i = 0; i <= items.Count; i++)
+        for (int i = 0; i < items.Count; i++) // FIX: <= went out of range, must be <
         {
             Console.WriteLine(items[i].Name + " - " + items[i].Quantity);
         }

@@ -5,11 +5,9 @@ def clean_folder(folder_path):
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
 
-        # skip folders and hidden files like .DS_Store
         if not os.path.isfile(file_path) or filename.startswith("."):
             continue
 
-        # "photo.JPG" -> "jpg"
         name, extension = os.path.splitext(filename)
         extension = extension[1:].lower()
         if extension == "":

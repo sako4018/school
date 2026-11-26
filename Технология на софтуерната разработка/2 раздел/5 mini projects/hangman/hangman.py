@@ -1,5 +1,4 @@
-import random
-
+import random 
 words = ['python', 'java', 'kotlin', 'javascript', 'ruby', 'swift']
 
 chosen_word = random.choice(words)
@@ -11,11 +10,8 @@ print("Welcome to the game")
 while attempts > 0 and '_' in word_display:
     print("\n" + ' '.join(word_display))
     guess = input("Guess a letter: ").lower()
-    if len(guess) != 1:
-        print("Please enter exactly one letter")
-        continue
     if guess in chosen_word:
-        for index, letter in enumerate(chosen_word):
+        for index, letter in enumrate(chosen_word):
             if letter == guess:
                 word_display[index] = guess
 
