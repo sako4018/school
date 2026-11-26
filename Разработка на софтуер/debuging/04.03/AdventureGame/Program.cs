@@ -10,18 +10,30 @@ class Player
         Y = 0;
         Health = 100;
     }
-    public void Move(string direction)
+    public bool Move(string direction, int mapWidth, int mapHeight) // 
     {
+        int newX = X; // 
         if (direction == "up")
-            Y++;
+            newY++;
         else if (direction == "down")
-            Y--;
+            newY--;
         else if (direction == "left")
-            X--;
+            newX--;
         else if (direction == "right")
-            X++;
+            newX++;
         else
+        {
             Console.WriteLine("Unknown direction!");
+            return false; // FIX: invalid command is not a move (no damage)
+        }
+        if (newX < 0 || newX >= mapWidth || newY < 0 || newY >= mapHeight) // FIX: player cannot leave the 5x5 map
+        {
+            Console.WriteLine("You can't go outside the map!");
+            return false; // FIX: refused move is not a move (no damage)
+        }
+        X = newX;
+        Y = newY;
+        return true;
     }
 }
 class AdventureGame
@@ -29,20 +41,38 @@ class AdventureGame
     static int mapWidth = 5;
     static int mapHeight = 5;
     static Player player = new Player();
+    static Random random = new Random(); // 
     static void Main()
     {
         Console.WriteLine("Welcome to the Adventure Game!");
         Console.WriteLine("Use commands: up, down, left, right, quit");
         string command = "";
-        while (command != "quit")
+        while (command != "quit" && player.Health > 0) // 
         {
             Console.Write($"Player position: ({player.X},{player.Y}) | Health: {player.Health}\n> ");
             command = Console.ReadLine();
-            player.Move(command);
-            Random random = new Random();
-            int damage = random.Next(0, 20);
-            player.Health -= damage;
-            Console.WriteLine($"You took {damage} damage!");
+            if (command == null) // 
+            {
+                command = "quit";
+            }
+            if (command == "quit") // 
+            {
+                break;
+            }
+            if (player.Move(command, mapWidth, mapHeight)) // 
+            {
+                int damage = random.Next(0, 20);
+                player.Health -= damage;
+                if (player.Health < 0) // 
+                {
+                    player.Health = 0;
+                }
+                Console.WriteLine($"You took {damage} damage!");
+            }
+        }
+        if (player.Health <= 0)
+        {
+            Console.WriteLine("You have no health left!");
         }
         Console.WriteLine("Game Over!");
     }
