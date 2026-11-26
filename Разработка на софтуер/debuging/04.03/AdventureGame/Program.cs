@@ -13,6 +13,7 @@ class Player
     public bool Move(string direction, int mapWidth, int mapHeight) // 
     {
         int newX = X; // 
+        int newY = Y;
         if (direction == "up")
             newY++;
         else if (direction == "down")
@@ -24,12 +25,12 @@ class Player
         else
         {
             Console.WriteLine("Unknown direction!");
-            return false; // FIX: invalid command is not a move (no damage)
+            return false; //
         }
-        if (newX < 0 || newX >= mapWidth || newY < 0 || newY >= mapHeight) // FIX: player cannot leave the 5x5 map
+        if (newX < 0 || newX >= mapWidth || newY < 0 || newY >= mapHeight) //
         {
             Console.WriteLine("You can't go outside the map!");
-            return false; // FIX: refused move is not a move (no damage)
+            return false; //
         }
         X = newX;
         Y = newY;

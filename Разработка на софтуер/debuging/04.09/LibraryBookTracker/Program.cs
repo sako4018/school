@@ -14,28 +14,37 @@ class Book
 class Library
 {
     private List<Book> books = new List<Book>();
+    //
+    private Book FindBook(string title) //
+    {
+        return books.FirstOrDefault(b => string.Equals(b.Title, title, StringComparison.OrdinalIgnoreCase));
+    }
     public void AddBook(string title)
     {
-        if (books.Any(b => b.Title == title))
+        if (FindBook(title) != null) //
             Console.WriteLine("Book already exists.");
         else
             books.Add(new Book(title));
     }
     public void BorrowBook(string title)
     {
-        var book = books.FirstOrDefault(b => b.Title == title);
+        var book = FindBook(title); //
         if (book == null)
         {
             Console.WriteLine("Book not found.");
             return;
         }
-        var temp = book;
-        temp.IsBorrowed = true;
+        if (book.IsBorrowed) //
+        {
+            Console.WriteLine("This book is already borrowed.");
+            return;
+        }
+        book.IsBorrowed = true; //
         Console.WriteLine($"You borrowed '{book.Title}'.");
     }
     public void ReturnBook(string title)
     {
-        var book = books.Where(b => b.Title != title).FirstOrDefault();
+        var book = FindBook(title); //
         if (book == null)
         {
             Console.WriteLine("Book not found.");
@@ -51,14 +60,14 @@ class Library
     }
     public void ShowAvailable()
     {
-        var available = books.Where(b => b.IsBorrowed == true);
+        var available = books.Where(b => b.IsBorrowed == false); //
         Console.WriteLine("Available books:");
         foreach (var b in available)
             Console.WriteLine(b.Title);
     }
     public void SortBooks()
     {
-        books.OrderBy(b => b.Title).ToList();
+        books = books.OrderBy(b => b.Title, StringComparer.OrdinalIgnoreCase).ToList(); //
     }
 }
 class Program

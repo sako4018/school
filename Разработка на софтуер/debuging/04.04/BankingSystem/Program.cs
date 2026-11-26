@@ -54,7 +54,7 @@ class BankingSystem
             amount = 0;
             return false;
         }
-        if (!decimal.TryParse(input, NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out amount)) // FIX: TryParse with a fixed culture and only a dot as separator (a comma is rejected)
+        if (!decimal.TryParse(input, NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out amount)) //
         {
             Console.WriteLine("Invalid amount!");
             return false;
