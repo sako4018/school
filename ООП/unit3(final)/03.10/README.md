@@ -6,7 +6,7 @@
 
 Интерфейс `IVehicle`, класове `Bicycle` и `Car` с промяна на скоростта и колекция `Generic<T>`.
 
-Засега проектът е начална заготовка и извежда само `Hello World!`. Пълното условие е в Classroom, „final tasks(unit 3)“.
+Програмата събира велосипеди и коли в `Generic<IVehicle>`, променя скоростта им с `speedUp` и `applyBrakes` (не пада под 0) и извежда информацията. Условието е в Classroom, „final tasks(unit 3)“.
 
 ## Как се пуска
 
