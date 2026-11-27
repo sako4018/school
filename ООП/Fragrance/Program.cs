@@ -17,7 +17,6 @@ namespace Fragrance
 
         protected Perfume(string brand, string name, double price)
         {
-            // Първо проверяваме, после записваме
             if (string.IsNullOrWhiteSpace(brand) || string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("Марката и името не могат да са празни.");
@@ -135,7 +134,6 @@ namespace Fragrance
         }
     }
 
-    // Тестерът не наследява Perfume, затова няма цена
     class PerfumeTester : IFragrance
     {
         public Guid Id { get; private set; }
@@ -180,7 +178,6 @@ namespace Fragrance
             fragrances.Add(new EauDeToilette("Hugo Boss", "Bottled", 80.00, true, "Ябълка и канела", 10));
             fragrances.Add(new PerfumeTester("Свежи цитруси", 2));
 
-            // 6. Демонстрация
             Console.WriteLine("=== Всички аромати ===");
             foreach (IFragrance fragrance in fragrances)
             {
@@ -198,7 +195,6 @@ namespace Fragrance
                 Console.WriteLine();
             }
 
-            // 7. Сортиране по трайност (на копие, с пряка сортировка с два цикъла)
             List<IFragrance> sorted = new List<IFragrance>(fragrances);
             for (int i = 0; i < sorted.Count - 1; i++)
             {
@@ -219,7 +215,6 @@ namespace Fragrance
             }
             Console.WriteLine();
 
-            // Филтър: трайност над 10 часа (точно 10 не влиза)
             Console.WriteLine("=== Трайност над 10 часа ===");
             int longCount = 0;
             for (int i = 0; i < fragrances.Count; i++)
@@ -236,7 +231,6 @@ namespace Fragrance
             }
             Console.WriteLine();
 
-            // Средна цена само на EauDeParfum
             double sum = 0;
             int parfumCount = 0;
             for (int i = 0; i < fragrances.Count; i++)
@@ -258,7 +252,6 @@ namespace Fragrance
             }
             Console.WriteLine();
 
-            // Най-висок OilPercentage (при равни се извеждат всички)
             int maxOil = -1;
             for (int i = 0; i < fragrances.Count; i++)
             {
@@ -284,7 +277,6 @@ namespace Fragrance
             }
             Console.WriteLine();
 
-            // 8. Самопроверка на категориите: 14, 15, 20, 21
             Console.WriteLine("=== Самопроверка на категориите ===");
             int[] percents = { 14, 15, 20, 21 };
             for (int i = 0; i < percents.Length; i++)

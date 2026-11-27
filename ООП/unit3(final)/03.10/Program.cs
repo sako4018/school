@@ -16,7 +16,6 @@ namespace Task_03_10
 
         public Bicycle(int speed, int gear)
         {
-            // Началната скорост е неотрицателна
             if (speed < 0)
             {
                 throw new ArgumentException("Скоростта не може да е отрицателна.");
@@ -43,7 +42,6 @@ namespace Task_03_10
                 return;
             }
             speed = speed - decrement;
-            // Скоростта не пада под 0
             if (speed < 0)
             {
                 speed = 0;
@@ -138,26 +136,21 @@ namespace Task_03_10
             }
             Console.WriteLine();
 
-            // Самопроверка през променлива от тип IVehicle: speed = 10, speedUp(5) => 15
             IVehicle first = vehicles[0];
             first.speedUp(5);
             Console.WriteLine("След speedUp(5): " + first);
 
-            // applyBrakes(20) => 0, не под нулата
             first.applyBrakes(20);
             Console.WriteLine("След applyBrakes(20): " + first);
 
-            // Промяна с 0 запазва състоянието
             first.speedUp(0);
             Console.WriteLine("След speedUp(0): " + first);
 
-            // Отрицателна промяна се отхвърля
             first.speedUp(-5);
             first.applyBrakes(-5);
             Console.WriteLine("След отрицателни промени: " + first);
             Console.WriteLine();
 
-            // Колата
             vehicles[1].speedUp(40);
             vehicles[1].applyBrakes(30);
 

@@ -5,7 +5,6 @@ namespace Task_03_04
 {
     abstract class Animal
     {
-        // Брой животни в групата
         public int Count { get; private set; }
 
         protected Animal(int count)
@@ -19,7 +18,6 @@ namespace Task_03_04
 
         public abstract string Name { get; }
 
-        // Храна за всички животни от вида, в грамове
         public abstract double FoodGrams { get; }
     }
 
@@ -78,7 +76,6 @@ namespace Task_03_04
     {
         private List<T> items = new List<T>();
 
-        // Брой групи във фермата
         public int Count
         {
             get { return items.Count; }
@@ -97,7 +94,6 @@ namespace Task_03_04
 
     class Program
     {
-        // Чете неотрицателно цяло число; при грешен вход пита отново
         static int ReadCount(string text)
         {
             Console.Write(text);

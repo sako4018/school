@@ -16,7 +16,6 @@ namespace Task_03_09
 
         public Person(string name, double money)
         {
-            // Началният баланс е краен и неотрицателен
             if (double.IsNaN(money) || double.IsInfinity(money) || money < 0)
             {
                 throw new ArgumentException("Началният баланс трябва да е краен и неотрицателен.");
@@ -25,7 +24,6 @@ namespace Task_03_09
             this.money = money;
         }
 
-        // Проверява дали сумата е валидна (крайна и положителна)
         private bool IsValidAmount(double amount)
         {
             if (double.IsNaN(amount) || double.IsInfinity(amount) || amount <= 0)
@@ -65,7 +63,6 @@ namespace Task_03_09
         }
     }
 
-    // Една колекция, която се използва и за добавяне, и за извеждане
     class Generic<T>
     {
         private List<T> list = new List<T>();
@@ -108,14 +105,12 @@ namespace Task_03_09
             clients.PrintAll();
             Console.WriteLine();
 
-            // Самопроверка: 100, deposit(50), withdraw(30) => 120
             clients[0].deposit(50);
             clients[0].withdraw(30);
             Console.WriteLine("След deposit(50) и withdraw(30):");
             Console.WriteLine(clients[0]);
             Console.WriteLine();
 
-            // Невалидни операции не променят баланса
             Console.WriteLine("Невалидни операции:");
             clients[0].withdraw(200);
             clients[0].deposit(0);
@@ -125,7 +120,6 @@ namespace Task_03_09
             Console.WriteLine(clients[0]);
             Console.WriteLine();
 
-            // Операция върху един клиент не променя другите
             clients[1].withdraw(500);
             Console.WriteLine("Всички клиенти накрая:");
             clients.PrintAll();

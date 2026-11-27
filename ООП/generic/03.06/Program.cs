@@ -38,7 +38,6 @@ namespace Task_03_06
         public bool IsHerbivore { get; set; }
         public bool IsCarnivore { get; set; }
 
-        // Броят крака е неотрицателен
         public int NumberOfLegs
         {
             get { return numberOfLegs; }
@@ -108,7 +107,6 @@ namespace Task_03_06
         }
     }
 
-    // Колекция с индексатор само за четене
     class Generic_class<T>
     {
         private List<T> items = new List<T>();
@@ -142,7 +140,6 @@ namespace Task_03_06
         {
             Generic_class<IAnimal> animals = new Generic_class<IAnimal>();
 
-            // Празна колекция
             Console.WriteLine("Празна колекция, Count = " + animals.Count);
             Console.WriteLine();
 
@@ -164,7 +161,6 @@ namespace Task_03_06
                     + ", козина: " + animal.HasFur + ", пера: " + animal.HasFeathers
                     + ", копита: " + animal.HasHooves);
 
-                // Видът се разпознава по класа, не по свойствата
                 if (animal is Bird)
                 {
                     Console.WriteLine("  Клас: Bird");
@@ -174,7 +170,6 @@ namespace Task_03_06
                     Console.WriteLine("  Клас: Cow");
                 }
 
-                // false значи възрастен бозайник
                 if (animal is IMammal mammal)
                 {
                     Console.WriteLine("  Бозайник, IsBabyMammal: " + mammal.IsBabyMammal);
@@ -192,7 +187,6 @@ namespace Task_03_06
                 Console.WriteLine();
             }
 
-            // Невалиден индекс
             try
             {
                 IAnimal wrong = animals[10];

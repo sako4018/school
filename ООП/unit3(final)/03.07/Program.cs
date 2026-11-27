@@ -13,7 +13,6 @@ namespace Task_03_07
     {
         public string Name { get; set; }
         public string Destination { get; set; }
-        // Датата се пази като текст във формат yyyy-MM-dd
         public string Departure_date { get; set; }
 
         public Person(string name, string destination, string departureDate)
@@ -33,7 +32,6 @@ namespace Task_03_07
     {
         private List<T> list = new List<T>();
 
-        // Броят винаги е действителният брой елементи в списъка
         public int count
         {
             get { return list.Count; }
@@ -46,7 +44,6 @@ namespace Task_03_07
             }
         }
 
-        // Добавя само пътници за Paris
         public void Add(T person)
         {
             if (person.Destination == "Paris")
@@ -86,7 +83,6 @@ namespace Task_03_07
             }
         }
 
-        // Добавя само пътници за Milano
         public void Add(T person)
         {
             if (person.Destination == "Milano")
@@ -117,17 +113,14 @@ namespace Task_03_07
             Paris<Person> paris = new Paris<Person>();
             Milano<Person> milano = new Milano<Person>();
 
-            // Празна колекция
             paris.Count();
             milano.Count();
             Console.WriteLine();
 
-            // Двама пътници за Paris и един за Milano
             paris.Add(new Person("Иван Петров", "Paris", "2026-12-01"));
             paris.Add(new Person("Мария Георгиева", "Paris", "2026-12-05"));
             milano.Add(new Person("Георги Димитров", "Milano", "2026-12-03"));
 
-            // Непозната дестинация и пътник в грешната колекция
             paris.Add(new Person("Стефан Илиев", "London", "2026-12-07"));
             milano.Add(new Person("Анна Колева", "Paris", "2026-12-09"));
             Console.WriteLine();
@@ -148,12 +141,10 @@ namespace Task_03_07
             milano.Count();
             Console.WriteLine();
 
-            // Повторно извеждане не променя броя
             paris.Count();
             milano.Count();
             Console.WriteLine();
 
-            // count не може да се разминава със списъка
             try
             {
                 paris.count = 10;

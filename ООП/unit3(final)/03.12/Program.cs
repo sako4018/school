@@ -32,7 +32,6 @@ namespace Task_03_12
         }
     }
 
-    // Lion е бозайник, затова реализира и двата интерфейса
     class Lion : IAnimal, IMammal
     {
         public string tail { get; set; }
@@ -46,7 +45,6 @@ namespace Task_03_12
             baby_mammal = "baby_mammal";
         }
 
-        // Един public show() за двата интерфейса
         public void show()
         {
             Console.WriteLine("Lion has got " + tail + " and " + baby_mammal);
@@ -70,7 +68,6 @@ namespace Task_03_12
         }
     }
 
-    // Ограничителят гарантира, че T има метода show()
     class ConstrainByInterface<T> where T : IAnimal
     {
         private T animal;

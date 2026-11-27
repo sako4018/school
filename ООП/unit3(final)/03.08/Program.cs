@@ -17,8 +17,6 @@ namespace Task_03_08
         string Experience { get; set; }
     }
 
-    // Общ клас за служителите, за да не се повтаря кодът три пъти.
-    // Реализира и двата интерфейса. Възрастта и заплатата са неотрицателни.
     class Employee : IPerson, IEmployee
     {
         private int age;
@@ -90,7 +88,6 @@ namespace Task_03_08
         }
     }
 
-    // Студентът е само IPerson, няма ID и заплата
     class Student : IPerson
     {
         private int age;
@@ -134,7 +131,6 @@ namespace Task_03_08
         }
     }
 
-    // Собствена колекция
     class Persons<T>
     {
         private List<T> list = new List<T>();
@@ -173,17 +169,14 @@ namespace Task_03_08
             {
                 IPerson person = persons[i];
 
-                // Общите данни
                 Console.Write(person.Name + "; " + person.Age + " г.; " + person.Role);
 
-                // Данни само за служителите
                 if (person is IEmployee employee)
                 {
                     Console.Write("; ID " + employee.ID + "; " + employee.Salary + " лв.; " + employee.Experience);
                     employees++;
                 }
 
-                // Данни само за студента
                 if (person is Student student)
                 {
                     Console.Write("; Grade " + student.Grade.ToString("F2") + "; no experience");
