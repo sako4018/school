@@ -6,7 +6,7 @@
 
 Интерфейси `IPerson` и `IEmployee`, класове `HeadTeacher`, `Teacher`, `Staff`, `Student` и колекция `Persons<T>`.
 
-Засега проектът е начална заготовка и извежда само `Hello World!`. Пълното условие е в Classroom, „final tasks(unit 3)“.
+Програмата събира служителите и студента в `Persons<IPerson>` и ги извежда. Данните за служител (`ID`, `Salary`, `Experience`) и за студент (`Grade`) се взимат с `is`. Условието е в Classroom, „final tasks(unit 3)“.
 
 ## Как се пуска
 
